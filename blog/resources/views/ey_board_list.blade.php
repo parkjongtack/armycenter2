@@ -36,7 +36,7 @@
 									<option value="N" @if($data->use_status == 'N') selected @endif >중지</option>
 								</select>
 							</td>
-							<td class="delete_box"><a href="javascript:control('{{ $data->idx }}');">삭제</a><a href="javascript:modify('{{ $data->idx }}');" style="background-color: #08AEEA; border:1px solid #0faeea; color: #fff;">수정</a></td>
+							<td class="delete_box"><a href="javascript:control('{{ $data->idx }}');">삭제</a><a href="/ey_admin/{{ request()->segment(2) }}/write_board_form/modify?board_idx={{ $data->idx }}" style="background-color: #08AEEA; border:1px solid #0faeea; color: #fff;">수정</a></td>
 						</tr>
 					@endforeach
 				@endif

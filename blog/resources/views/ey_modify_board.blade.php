@@ -32,125 +32,10 @@
                         카테고리
                     </div>
                     <div class="line_content">
-						@if(request()->segment(2) == 'pcslider')
-							<input type="text" name="category" value="PC슬라이더" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'press')
-							<input type="text" name="category" value="PRESS" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'beds')
-							<input type="text" name="category" value="BEDS" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'acc')
-							<input type="text" name="category" value="ACC" readonly style="border:none;" />
-							<select name="category2" id="category2">
-								<option value="pillows" @if($data->category2 == 'pillows') selected @endif >Pillows</option>
-								<option value="downqults" @if($data->category2 == 'downqults') selected @endif >Down quilts</option>
-								<option value="bedlinen" @if($data->category2 == 'bedlinen') selected @endif >Bed linen</option>
-								<option value="headborards" @if($data->category2 == 'headborards') selected @endif >Headboards and covers</option>
-								<option value="skirts" @if($data->category2 == 'skirts') selected @endif >Bed skirts</option>
-								<option value="legs" @if($data->category2 == 'legs') selected @endif >Bed legs</option>
-								<option value="covers" @if($data->category2 == 'covers') selected @endif >Mattress covers</option>
-								<option value="personal" @if($data->category2 == 'personal') selected @endif >Personal Accessories</option>
-								<option value="collection" @if($data->category2 == 'collection') selected @endif >children's collection</option>
-							</select>
-						@elseif(request()->segment(2) == 'section')
-							<input type="text" name="category" value="SECTION" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'label')
-							<input type="text" name="category" value="LABEL" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'pouch')
-							<input type="text" name="category" value="POUCH" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'inquiry')
-							<input type="text" name="category" value="INQUIRY" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'equipment')
-							<input type="text" name="category" value="EQUIPMENT" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'sale_label')
-							<input type="text" name="category" value="SALE_LABEL" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'sale_pouch')
-							<input type="text" name="category" value="SALE_POUCH" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'notice')
-							<input type="text" name="category" value="NOTICE" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'popup')
-							<input type="text" name="category" value="POPUP" readonly style="border:none;" />
-						@endif
+						<input type="text" name="category" value="응원 메시지" readonly style="border:none;" />
                     </div>
                 </div>
 			</div>
-			@if(request()->segment(2) == 'equipment')
-			<div class="write_line">
-				<div class="all_line">
-					<div class="line_title">
-						카테고리2
-					</div>
-					<div class="line_content">
-						<select name="category2" id="category2">
-							<option value="1" @if($data->category2 == '1') selected @endif >라벨인쇄설비</option>
-							<option value="2" @if($data->category2 == '2') selected @endif >라벨제판설비</option>
-							<option value="3" @if($data->category2 == '3') selected @endif >라벨부착설비</option>
-							<option value="4" @if($data->category2 == '4') selected @endif >파우치인쇄설비</option>
-							<option value="5" @if($data->category2 == '5') selected @endif >파우치제반설비</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			@elseif(request()->segment(2) == 'sale_label')
-			<div class="write_line">
-				<div class="all_line">
-					<div class="line_title">
-						카테고리2
-					</div>
-					<div class="line_content">
-						<select name="category2" id="category2">
-							<option value="1" @if($data->category2 == '1') selected @endif >화장품</option>
-							<option value="2" @if($data->category2 == '2') selected @endif >제약</option>
-							<option value="3" @if($data->category2 == '3') selected @endif >생활용품</option>
-							<option value="4" @if($data->category2 == '4') selected @endif >주방용품</option>
-							<option value="5" @if($data->category2 == '5') selected @endif >식품</option>
-							<option value="6" @if($data->category2 == '6') selected @endif >의류</option>
-							<option value="7" @if($data->category2 == '7') selected @endif >화학</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			@elseif(request()->segment(2) == 'sale_pouch')
-			<div class="write_line">
-				<div class="all_line">
-					<div class="line_title">
-						카테고리2
-					</div>
-					<div class="line_content">
-						<select name="category2" id="category2">
-							<option value="1" @if($data->category2 == '1') selected @endif >스파우트</option>
-							<option value="2" @if($data->category2 == '2') selected @endif >지퍼스탠드</option>
-							<option value="3" @if($data->category2 == '3') selected @endif >지퍼백</option>
-							<option value="4" @if($data->category2 == '4') selected @endif >스택드업</option>
-							<option value="5" @if($data->category2 == '5') selected @endif >삼방</option>
-							<option value="6" @if($data->category2 == '6') selected @endif >스틱롤</option>
-							<option value="7" @if($data->category2 == '7') selected @endif >M방</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			@endif
-			@if(request()->segment(2) == 'beds')
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							대제목
-						</div>
-						<div class="line_content">
-							<input type="text" name="subject" value="{{ $data->subject }}" />
-						</div>
-                </div>
-            </div>
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							소제목
-						</div>
-						<div class="line_content">
-							<input type="text" name="subject2" value="{{ $data->contents }}" />
-						</div>
-                </div>
-            </div>
-			@else
 			<div class="write_line">
                 <div class="all_line">
 						<div class="line_title">
@@ -161,7 +46,6 @@
 						</div>
                 </div>
             </div>
-			@endif
 			@if(request()->segment(2) == 'label' || request()->segment(2) == 'pouch' || request()->segment(2) == 'inquiry')
             <div class="write_line">
                 <div class="all_line">
@@ -318,43 +202,7 @@
                         </div>
                 </div>
             </div> --}}
-			@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'section' && request()->segment(2) != 'label' && request()->segment(2) != 'pouch' && request()->segment(2) != 'inquiry' && request()->segment(2) != 'notice' && request()->segment(2) != 'equipment' && request()->segment(2) != 'sale_label' && request()->segment(2) != 'sale_pouch')
-            <div class="write_line cate_file">
-                <div class="all_line">
-                    <div class="line_title">
-                        팝업위치
-                    </div>
-                    <div class="line_content">
-                        <label for="lefttop"><input type="radio" name="pop_position" value="lefttop" id="lefttop" @if($data->pop_position == 'lefttop') checked @endif />좌측상단</label>
-                        <label for="righttop"><input type="radio" name="pop_position" value="righttop" id="righttop" @if($data->pop_position == 'righttop') checked @endif />우측상단</label>
-                        <label for="leftbot"><input type="radio" name="pop_position" value="leftbot" id="leftbot" @if($data->pop_position == 'leftbot') checked @endif />좌측하단</label>
-                        <label for="rightbot"><input type="radio" name="pop_position" value="rightbot" id="rightbot" @if($data->pop_position == 'rightbot') checked @endif />우측하단</label>
-                    </div>
-                </div>
-            </div>			
-            <div class="write_line cate_file">
-                <div class="all_line">
-                    <div class="line_title">
-                        팝업크기
-                    </div>
-                    <div class="line_content">
-                        가로 : <input type="number" name="i_width" value="{{ $data->i_width }}" />
-                        세로 : <input type="number" name="i_height" value="{{ $data->i_height }}" />
-                    </div>
-                </div>
-            </div>
-            <div class="write_line cate_file">
-                <div class="all_line">
-                    <div class="line_title">
-                        팝업여백
-                    </div>
-                    <div class="line_content">
-                        가로 : <input type="number" name="m_width" value="{{ $data->m_width }}" />
-                        세로 : <input type="number" name="m_height" value="{{ $data->m_height }}" />
-                    </div>
-                </div>
-            </div>
-			@endif
+			
 			@if(request()->segment(2) != 'press' && request()->segment(2) != 'media')
             <span id="append_target">
                 <div class="write_line cate_file">
@@ -454,22 +302,6 @@
 							
 						</div>
 					</div>
-					<div class="all_line">
-						<div class="line_title" style="position: relative; top:50%; transform:translateY(-50%)">슬라이드 정보</div>
-						<div class="line_content">
-							@foreach($data2 as $data2)
-							<div>
-								소제목 : <input type="text" name="sub_subject[]" value="{{ $data2->sub_subject }}" style="border:none" readonly />
-								소제목2 : <input type="text" name="sub_subject2[]" value="{{ $data2->sub_subject2 }}" style="border:none" readonly />
-								소제목3 : <input type="text" name="sub_subject3[]" value="{{ $data2->sub_subject3 }}" style="border:none" readonly />
-								우선순위 : {{ $data2->priority }}
-								<a href="/storage/app/images/{{ $data2->real_file_name }}" target="_blank">[PC 파일보기]</a>
-								<a href="/storage/app/images/{{ $data2->real_file_name2 }}" target="_blank">[MOBILE 파일보기]</a>
-								<a href="javascript:control('{{ $data2->idx }}');" style="color:red;">[삭제]</a>
-							</div>
-							@endforeach
-						</div>
-					</div>
 					</div>
 					<div class="cate_file_append"></div>
 					<div class="write_line cate_file">
@@ -482,14 +314,7 @@
 								MOBILE : <input type="file" name="writer_sub_file_mobile2[]" />
 								우선순위 : <input type="number" name="sub_image_priority[]" style="width: 100px"> <span style="cursor: pointer; color: rgb(112, 96, 255)" class="add_file_sub_sub">서브항목추가 +</span>
 							</div>
-							@foreach($data3 as $data3)
-							<div>
-								<a href="/storage/app/images/{{ $data3->real_file_name }}" target="_blank">[PC 파일보기]</a>
-								<a href="/storage/app/images/{{ $data3->real_file_name2 }}" target="_blank">[MOBILE 파일보기]</a>
-								우선순위 : {{ $data3->priority }}
-								<a href="javascript:control('{{ $data3->idx }}');" style="color:red;">[삭제]</a>
-							</div>
-							@endforeach
+							
 						</div>
 					</div>					
 				<div class="cate_file_append_sub"></div>

@@ -19,82 +19,84 @@
                 <p class="dpIB">제72주년 국군의 날 캠페인</p>
             </div>
             <div class="people">
-                <p>대한민국 국방부와 <b class="c_blue"><span>1,234</span>명</b>이 함께하고 있어요!</p>
+                <p>대한민국 국방부와 <b class="c_blue"><span>{{ $main_set->people_cnt }}</span>명</b>이 함께하고 있어요!</p>
             </div>
         </div>
         <div id="section">
             <div class="sec sec1">
                 <div class="sec_bg">
-                    <img src="/img/sec1_bg.png" alt="">
+                    <img class="mo_none" src="/img/sec1_bg.png" alt="">
+                    <img class="mo_block" src="/img/m_sec1_bg.png" alt="">
                 </div>
                 <div class="sec_title transXY">
-                    <img src="/img/sec1_title.png" alt="">
+                    <img class="mo_none" src="/img/sec1_title.png" alt="">
                 </div>
             </div>
             <div class="sec sec2">
                 <div class="sec_bg">
-                    <img src="/img/sec2_bg.png" alt="">
+                    <img class="mo_none" src="/img/sec2_bg.png" alt="">
+                    <img class="mo_block" src="/img/m_sec2_bg.png" alt="">
                 </div>
                 <div class="sec_title transXY">
-                    <img src="/img/sec2_title.png" alt="">
+                    <img class="mo_none" src="/img/sec2_title.png" alt="">
                 </div>
             </div>
             <div class="sec sec3">
                 <div class="sec_bg">
-                    <img src="/img/sec3_bg.png" alt="">
-                </div>
-                <div class="sec_title">
-                    <img src="/img/sec3_title.png" alt="">
+                    <img class="mo_none" src="/img/sec3_bg.png" alt="">
+                    <img class="mo_block" src="/img/m_sec3_bg.png" alt="">
                 </div>
                 <div class="sec_sub transXY">
                     <div class="dDay">
                         <p class="how_many">D-<span>35</span>day<br><span class="org">현재까지</span></p>
                         <div class="people2">
-                            <span>1</span>
-                            <span>2</span>
-                            <span>3</span>
-                            <span>8</span>
+                            <span>{{ substr($main_set->people_cnt,0 ,1 ) }}</span>
+                            <span>{{ substr($main_set->people_cnt,1 ,1 ) }}</span>
+                            <span>{{ substr($main_set->people_cnt,2 ,1 ) }}</span>
+                            <span>{{ substr($main_set->people_cnt,3 ,1 ) }}</span>
                             <p>명</p>
                         </div>
                     </div>
                     <div class="grid">
-                        <img src="/img/sec3_sub1.png" alt="">
+                        <img src="/storage/app/images/{{ $main_set->learning1 }}" alt="">
                     </div>
                     <div class="grid grid_big">
-                        <img src="/img/sec3_sub3.png" alt="">
+                        <img src="/storage/app/images/{{ $main_set->learning3 }}" alt="">
                     </div>
                     <div class="grid">
-                        <img src="/img/sec3_sub2.png" alt="">
+                        <img src="/storage/app/images/{{ $main_set->learning2 }}" alt="">
                     </div>
                     <div class="grid">
-                        <img src="/img/sec3_sub4.png" alt="">
+                        <img src="/storage/app/images/{{ $main_set->learning4 }}" alt="">
                     </div>
                     <div class="grid">
-                        <img src="/img/sec3_sub5.png" alt="">
+                        <img src="/storage/app/images/{{ $main_set->learning5 }}" alt="">
                     </div>
                 </div>
             </div>
             <div class="sec sec4">
                 <div class="sec_bg">
-                    <img src="/img/sec4_bg.png" alt="">
+                    <img class="mo_none" src="/img/sec4_bg.png" alt="">
+                    <img class="mo_block" src="/img/m_sec4_bg.png" alt="">
                 </div>
                 <div class="sec_sub transXY">
-                    <img src="/img/sec4_sub1.png" alt="">
+                    <img class="mo_none" src="/img/sec4_sub1.png" alt="">
                 </div>
             </div>
             <div class="sec sec5">
                 <div class="sec_bg">
-                    <img src="/img/sec5_bg.png" alt="">
+                    <img class="mo_none" src="/img/sec5_bg.png" alt="">
+                    <img class="mo_block" src="/img/m_sec5_bg.png" alt="">
                 </div>
                 <div class="sec_title transX">
-                    <img src="/img/sec5_title.png" alt="">
+                    <img class="mo_none" src="/img/sec5_title.png" alt="">
                 </div>
                 <div class="sec_sub transX">
-                    <img src="/img/sec5_sub1.png" alt="">
-                    <img class="mt20" src="/img/sec5_sub2.png" alt="">
+                    <img class="mo_none" src="/img/sec5_sub1.png" alt="">
+                    <img class="mt20 mo_none" src="/img/sec5_sub2.png" alt="">
                 </div>
                 <div class="contact_outer transX">
-                    <p class="all_cnt">총 <span class="org">12345</span>개의 응원메시지가 있습니다.</p>
+                    <p class="all_cnt">총 <span class="org">{{ number_format($board_count_set->cnt) }}</span>개의 응원메시지가 있습니다.</p>
                     <div class="form_outer">
                         <form action="">
                             <div class="line_outer">
@@ -102,35 +104,40 @@
                             </div>
                             <div class="line_outer">
                                 <input type="text" name="" placeholder="이름을 입력해주세요">
-                                <input type="text" name="" placeholder="연략처를 입력해주세요 (-제외)">
+                                <input type="text" name="" placeholder="연략처를 입력해주세요 (-제외)" class="wd700">
                             </div>
                             <div class="line_outer">
                                 <input type="text" name="" placeholder="우편번호"  onclick="sample4_execDaumPostcode();">
-                                <input type="text" name="" placeholder="주소">
-                                <input type="text" name="" placeholder="상세주소입력">
+                                <span class="address_img"><img src="/img/form_address" alt=""></span>
+                                <input type="text" name="" placeholder="주소" class="wd340">
+                                <input type="text" name="" placeholder="상세주소입력" class="wd340">
                             </div>
                             <div class="line_outer">
-                                <div class="">
-                                    <select name="" id=""></select>
+                                <div class="select_size_outer">
+                                    <select name="">
+                                        <option value="">스파오 웜테크 사이즈를 선택해주세요</option>
+                                    </select>
                                     <div class="input_check">
                                         <p><label><input type="checkbox" required>개인정보 수집/이용에 동의합니다 </label><span id="see_tr01">[약관보기]</span></p>
                                         <p><label><input type="checkbox" required>개인정보 취급/위탁에 동의합니다 </label><span id="see_tr02">[약관보기]</span></p>
                                     </div>
                                 </div>
-                                <input type="submit">
+                                <input type="submit" value="함께 응원하기">
                             </div>
                         </form>
                     </div>
                     <ul class="list_outer">
+                        @foreach($board_set as $board_set)
                         <li>
                             <div class="top">
                                 <span>따뜻한 응원러&nbsp;&nbsp;|</span>
-                                <span>2020.01.01</span>
+                                <span>{{ str_replace("-", ".", substr($board_set->reg_date, 0, 10)) }}</span>
                             </div>
                             <div class="bot">
-                                <p>asdfasdfasdf</p>
+                                <p>{{ $board_set->contents }}</p>
                             </div>
                         </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
