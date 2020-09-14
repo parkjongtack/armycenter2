@@ -1,5 +1,5 @@
 @include('ey_header')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/editor/css/froala_editor.css">
 <link rel="stylesheet" href="/editor/css/froala_style.css">
 <link rel="stylesheet" href="/editor/css/plugins/code_view.css">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="/editor/css/plugins/help.css">
 <link rel="stylesheet" href="/editor/css/third_party/spell_checker.css">
 <link rel="stylesheet" href="/editor/css/plugins/special_characters.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css"> -->
 <div class="con_main">
     <form action="/ey_admin/{{ request()->segment(2) }}/write_board_action" name="board_write_form" method="post" enctype="multipart/form-data" onsubmit="return submit_check();" >
 		{{ csrf_field() }}
@@ -32,500 +32,56 @@
                         카테고리
                     </div>
                     <div class="line_content">
-						@if(request()->segment(2) == 'pcslider')
-							<input type="text" name="category" value="PC슬라이더" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'press')
-							<input type="text" name="category" value="PRESS" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'beds')
-							<input type="text" name="category" value="BEDS" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'acc')
-							<input type="text" name="category" value="ACC" readonly style="border:none;" />
-							<select name="category2" id="category2">
-								<option value="pillows" @if($data->category2 == 'pillows') selected @endif >Pillows</option>
-								<option value="downqults" @if($data->category2 == 'downqults') selected @endif >Down quilts</option>
-								<option value="bedlinen" @if($data->category2 == 'bedlinen') selected @endif >Bed linen</option>
-								<option value="headborards" @if($data->category2 == 'headborards') selected @endif >Headboards and covers</option>
-								<option value="skirts" @if($data->category2 == 'skirts') selected @endif >Bed skirts</option>
-								<option value="legs" @if($data->category2 == 'legs') selected @endif >Bed legs</option>
-								<option value="covers" @if($data->category2 == 'covers') selected @endif >Mattress covers</option>
-								<option value="personal" @if($data->category2 == 'personal') selected @endif >Personal Accessories</option>
-								<option value="collection" @if($data->category2 == 'collection') selected @endif >children's collection</option>
-							</select>
-						@elseif(request()->segment(2) == 'section')
-							<input type="text" name="category" value="SECTION" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'label')
-							<input type="text" name="category" value="LABEL" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'pouch')
-							<input type="text" name="category" value="POUCH" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'inquiry')
-							<input type="text" name="category" value="INQUIRY" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'equipment')
-							<input type="text" name="category" value="EQUIPMENT" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'sale_label')
-							<input type="text" name="category" value="SALE_LABEL" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'sale_pouch')
-							<input type="text" name="category" value="SALE_POUCH" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'notice')
-							<input type="text" name="category" value="NOTICE" readonly style="border:none;" />
-						@elseif(request()->segment(2) == 'popup')
-							<input type="text" name="category" value="POPUP" readonly style="border:none;" />
-						@endif
+						<input type="text" name="category" value="응원 메시지" readonly style="border:none;" />
                     </div>
                 </div>
 			</div>
-			@if(request()->segment(2) == 'equipment')
-			<div class="write_line">
-				<div class="all_line">
-					<div class="line_title">
-						카테고리2
-					</div>
-					<div class="line_content">
-						<select name="category2" id="category2">
-							<option value="1" @if($data->category2 == '1') selected @endif >라벨인쇄설비</option>
-							<option value="2" @if($data->category2 == '2') selected @endif >라벨제판설비</option>
-							<option value="3" @if($data->category2 == '3') selected @endif >라벨부착설비</option>
-							<option value="4" @if($data->category2 == '4') selected @endif >파우치인쇄설비</option>
-							<option value="5" @if($data->category2 == '5') selected @endif >파우치제반설비</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			@elseif(request()->segment(2) == 'sale_label')
-			<div class="write_line">
-				<div class="all_line">
-					<div class="line_title">
-						카테고리2
-					</div>
-					<div class="line_content">
-						<select name="category2" id="category2">
-							<option value="1" @if($data->category2 == '1') selected @endif >화장품</option>
-							<option value="2" @if($data->category2 == '2') selected @endif >제약</option>
-							<option value="3" @if($data->category2 == '3') selected @endif >생활용품</option>
-							<option value="4" @if($data->category2 == '4') selected @endif >주방용품</option>
-							<option value="5" @if($data->category2 == '5') selected @endif >식품</option>
-							<option value="6" @if($data->category2 == '6') selected @endif >의류</option>
-							<option value="7" @if($data->category2 == '7') selected @endif >화학</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			@elseif(request()->segment(2) == 'sale_pouch')
-			<div class="write_line">
-				<div class="all_line">
-					<div class="line_title">
-						카테고리2
-					</div>
-					<div class="line_content">
-						<select name="category2" id="category2">
-							<option value="1" @if($data->category2 == '1') selected @endif >스파우트</option>
-							<option value="2" @if($data->category2 == '2') selected @endif >지퍼스탠드</option>
-							<option value="3" @if($data->category2 == '3') selected @endif >지퍼백</option>
-							<option value="4" @if($data->category2 == '4') selected @endif >스택드업</option>
-							<option value="5" @if($data->category2 == '5') selected @endif >삼방</option>
-							<option value="6" @if($data->category2 == '6') selected @endif >스틱롤</option>
-							<option value="7" @if($data->category2 == '7') selected @endif >M방</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			@endif
-			@if(request()->segment(2) == 'beds')
             <div class="write_line">
                 <div class="all_line">
-						<div class="line_title">
-							대제목
+                    <div class="line_title">
+                        이름
+                    </div>
+                    <div class="line_content">
+                        <input type="text" name="writer" value="{{ $data->writer }}" readonly style="border:none;">
+                    </div>
+                </div>
+            </div>
+			<div class="write_line">
+                <div class="all_line">
+						<div class="line_title" style="vertical-align:top;">
+							내용
 						</div>
 						<div class="line_content">
-							<input type="text" name="subject" value="{{ $data->subject }}" />
+							<textarea readonly style="border: 1px solid #ddd; padding: 0px 10px; min-width: 400px;">{{ $data->contents }}</textarea>
 						</div>
                 </div>
             </div>
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							소제목
-						</div>
-						<div class="line_content">
-							<input type="text" name="subject2" value="{{ $data->contents }}" />
-						</div>
-                </div>
-            </div>
-			@else
 			<div class="write_line">
                 <div class="all_line">
 						<div class="line_title">
-							제목
+							선택 사이즈
 						</div>
 						<div class="line_content">
-							<input type="text" name="subject" value="{{ $data->subject }}" />
-						</div>
-                </div>
-            </div>
-			@endif
-			@if(request()->segment(2) == 'label' || request()->segment(2) == 'pouch' || request()->segment(2) == 'inquiry')
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							업체명
-						</div>
-						<div class="line_content">
-							<input type="text" name="corp_name" value="{{ $data->corp_name }}" />
+							<input type="text" name="subject" value="{{ $data->etc }}" />
 						</div>
                 </div>
             </div>
             <div class="write_line">
                 <div class="all_line">
-						<div class="line_title">
-							담당자명
-						</div>
+                    <div class="line_title" style="vertical-align:middle;">주소</div>
 						<div class="line_content">
-							<input type="text" name="manager_name" value="{{ $data->manager_name }}" />
-						</div>
-                </div>
-            </div>
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							비밀번호
-						</div>
-						<div class="line_content">
-							<input type="password" name="passwd" value="{{ $data->passwd }}" />
-						</div>
-                </div>
-            </div>
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							연락처
-						</div>
-						<div class="line_content">
-							<input type="text" name="tel" value="{{ $data->tel }}" />
-						</div>
-                </div>
-            </div>
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							이메일
-						</div>
-						<div class="line_content">
-							<input type="text" name="email" value="{{ $data->email}}" />
-						</div>
-                </div>
-            </div>
-			@endif
-			@if(request()->segment(2) == 'sale_label' || request()->segment(2) == 'sale_pouch')
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							업체명
-						</div>
-						<div class="line_content">
-							<input type="text" name="corp_name" value="{{ $data->corp_name}}" />
-						</div>
-                </div>
-            </div>
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							제품명
-						</div>
-						<div class="line_content">
-							<input type="text" name="product_name" value="{{ $data->product_name}}" />
-						</div>
-                </div>
-            </div>
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							재질
-						</div>
-						<div class="line_content">
-							<input type="text" name="material_name" value="{{ $data->material_name}}" />
-						</div>
-                </div>
-            </div>
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							사이즈
-						</div>
-						<div class="line_content">
-							<input type="text" name="size" value="{{ $data->size}}" />
-						</div>
-                </div>
-            </div>
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							유형
-						</div>
-						<div class="line_content">
-							<input type="text" name="type_set" value="{{ $data->type_set}}" />
-						</div>
-                </div>
-            </div>
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title">
-							기타
-						</div>
-						<div class="line_content">
-							<input type="text" name="etc" value="{{ $data->etc}}" />
-						</div>
-                </div>
-            </div>
-			@endif
-            <!-- <div class="write_line">
-                <div class="all_line">
-                    <div class="line_title">
-                        기간
-                    </div>
-                    <div class="line_content">
-                        <input type="text" id="start_period" name="start_period" value="{{ $data->start_period }}" /> ~
-                        <input type="text" id="end_period" name="end_period" value="{{ $data->end_period }}" />
-                    </div>
-                </div>
-            </div> -->
-			@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'beds' && request()->segment(2) != 'acc' && request()->segment(2) != 'popup')
-            <div class="write_line">
-                <div class="all_line">
-						<div class="line_title" style="vertical-align:top;">내용</div>
-						<div class="line_content">
-							<!-- <div id="editor">
-								<div id="edit" style="width:900px;">{!! $data->contents !!}</div>
-							</div> -->
-							<textarea id="editor" name="contents" cols="60" rows="10" style="">{!! $data->contents !!}</textarea>
-						</div>
-                </div>
-            </div>
-			@endif
-			@if(request()->segment(2) != 'beds' && request()->segment(2) != 'acc' && request()->segment(2) != 'popup' && request()->segment(2) != 'press' && request()->segment(2) != 'notice' && request()->segment(2) != 'label' && request()->segment(2) != 'pouch' && request()->segment(2) != 'inquiry' && request()->segment(2) != 'sale_label' && request()->segment(2) != 'sale_pouch')
-            <div class="write_line">
-                <div class="all_line">
-                    <div class="line_title" style="vertical-align:middle;">링크</div>
-						<div class="line_content">
-							<input type="text" name="link_value" value="{{ $data->link_value }}" />
-                        </div>
-                </div>
-            </div>
-			@endif
-            {{-- <div class="write_line">
-                <div class="all_line">
-                    <div class="line_title" style="vertical-align:middle;">우선순위</div>
-						<div class="line_content">
-							<input type="number" name="priority" value="{{ $data->priority }}" />
-                        </div>
-                </div>
-            </div> --}}
-			@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'section' && request()->segment(2) != 'label' && request()->segment(2) != 'pouch' && request()->segment(2) != 'inquiry' && request()->segment(2) != 'notice' && request()->segment(2) != 'equipment' && request()->segment(2) != 'sale_label' && request()->segment(2) != 'sale_pouch')
-            <div class="write_line cate_file">
-                <div class="all_line">
-                    <div class="line_title">
-                        팝업위치
-                    </div>
-                    <div class="line_content">
-                        <label for="lefttop"><input type="radio" name="pop_position" value="lefttop" id="lefttop" @if($data->pop_position == 'lefttop') checked @endif />좌측상단</label>
-                        <label for="righttop"><input type="radio" name="pop_position" value="righttop" id="righttop" @if($data->pop_position == 'righttop') checked @endif />우측상단</label>
-                        <label for="leftbot"><input type="radio" name="pop_position" value="leftbot" id="leftbot" @if($data->pop_position == 'leftbot') checked @endif />좌측하단</label>
-                        <label for="rightbot"><input type="radio" name="pop_position" value="rightbot" id="rightbot" @if($data->pop_position == 'rightbot') checked @endif />우측하단</label>
-                    </div>
-                </div>
-            </div>			
-            <div class="write_line cate_file">
-                <div class="all_line">
-                    <div class="line_title">
-                        팝업크기
-                    </div>
-                    <div class="line_content">
-                        가로 : <input type="number" name="i_width" value="{{ $data->i_width }}" />
-                        세로 : <input type="number" name="i_height" value="{{ $data->i_height }}" />
-                    </div>
-                </div>
-            </div>
-            <div class="write_line cate_file">
-                <div class="all_line">
-                    <div class="line_title">
-                        팝업여백
-                    </div>
-                    <div class="line_content">
-                        가로 : <input type="number" name="m_width" value="{{ $data->m_width }}" />
-                        세로 : <input type="number" name="m_height" value="{{ $data->m_height }}" />
-                    </div>
-                </div>
-            </div>
-			@endif
-			@if(request()->segment(2) != 'press' && request()->segment(2) != 'media')
-            <span id="append_target">
-                <div class="write_line cate_file">
-                    <div class="all_line">
-                        <div class="line_title">
-                            파일선택@if(request()->segment(2) == 'pcslider')(PC)@endif
-                        </div>
-                        <div class="line_content">
-							<input type="file" name="writer_file" />
-							<a href="/storage/app/images/{{ $data->attach_file }}" target="_blank">[파일보기]</a>
-							@if(request()->segment(2) == 'pcslider')
-							<span class="set">(사이즈 1920x720)</span>
-							@elseif(request()->segment(2) == 'beds')
-							<span class="set">(사이즈 1400x960)</span>
-							@endif
-							@if(request()->segment(2) == 'acc')
-							<label for="all_type"><input type="checkbox" id="all_type" name="all_type" value="Y" @if($data->all_type == 'Y') checked @endif />가로전체 채우기</label>
-							@endif
-							@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'section' && request()->segment(2) != 'label' && request()->segment(2) != 'inquiry' && request()->segment(2) != 'equipment' && request()->segment(2) != 'pouch' && request()->segment(2) != 'sale_label' && request()->segment(2) != 'sale_pouch')
-                            <span style="cursor: pointer" class="add_file">파일추가 +</span>
-							@endif
+							<input type="text" name="address" value="{{ $data->address }}" />
                         </div>
                     </div>
-                </div>
-			</span>
-			@endif
-			@if(request()->segment(2) == 'press')
-			<span id="append_target">
-                <div class="write_line cate_file">
-                    <div class="all_line">
-                        <div class="line_title">
-                            썸네일 이미지@if(request()->segment(2) == 'beds' || request()->segment(2) == 'acc' || request()->segment(2) == 'pcslider')(PC)@endif
-                        </div>
-                        <div class="line_content">
-							<input type="file" name="writer_file" />
-							<a href="/storage/app/images/{{ $data->attach_file }}" target="_blank">[썸네일 보기]</a>
-							@if(request()->segment(2) == 'pcslider')
-							<span class="set">(사이즈 1920x720)</span>
-							@elseif(request()->segment(2) == 'beds')
-							<span class="set">(사이즈 1400x960)</span>
-							@endif
-							@if(request()->segment(2) == 'acc')
-							<label for="all_type"><input type="checkbox" id="all_type" name="all_type" value="Y" @if($data->all_type == 'Y') checked @endif />가로전체 채우기</label>
-							@endif
-							@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'press' && request()->segment(2) != 'beds' && request()->segment(2) != 'acc' && request()->segment(2) != 'popup')
-                            <span style="cursor: pointer" class="add_file">파일추가 +</span>
-							@endif
-                        </div>
-                    </div>
-                </div>
-			</span>
-			@endif
-			@if(request()->segment(2) == 'beds' || request()->segment(2) == 'acc' || request()->segment(2) == 'pcslider' || request()->segment(2) == 'section' || request()->segment(2) == 'label' || request()->segment(2) == 'inquiry' || request()->segment(2) == 'notice' || request()->segment(2) == 'equipment' || request()->segment(2) == 'pouch')
-            <span id="append_target_mobile">
-                <div class="write_line cate_file">
-                    <div class="all_line">
-                        <div class="line_title">
-                            파일선택@if(request()->segment(2) == 'beds' || request()->segment(2) == 'pcslider' || request()->segment(2) == 'popup')(MOBILE)@endif
-                        </div>
-                        <div class="line_content">
-                            <input type="file" name="writer_file_mobile" />
-							<a href="/storage/app/images/{{ $data->attach_file2 }}" target="_blank">[파일보기]</a>
-							@if(request()->segment(2) == 'pcslider')
-							<span class="set">(사이즈 1080x615)</span>
-							@elseif(request()->segment(2) == 'beds')
-							<span class="set">(사이즈 1400x960)</span>
-							@endif
-							@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'press' && request()->segment(2) != 'beds' && request()->segment(2) != 'acc' && request()->segment(2) != 'popup' && request()->segment(2) != 'section' && request()->segment(2) != 'label' && request()->segment(2) != 'inquiry' && request()->segment(2) != 'notice' && request()->segment(2) != 'equipment' && request()->segment(2) != 'pouch')
-                            <span style="cursor: pointer" class="add_file">파일추가 +</span>
-							@endif
-                        </div>
-                    </div>
-                </div>
-            </span>
-			@endif
-			<span id="append_target_sub">
-			@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'section' && request()->segment(2) != 'label' && request()->segment(2) != 'pouch' && request()->segment(2) != 'inquiry' && request()->segment(2) != 'popup' && request()->segment(2) != 'notice' && request()->segment(2) != 'equipment' && request()->segment(2) != 'sale_label' && request()->segment(2) != 'sale_pouch')
-                <div class="write_line cate_file slider_area">
-                    <div class="all_line">
-                        <div class="line_title">
-                            슬라이드 영역
-                        </div>
-                        <div class="line_content">
-                            PC : <input type="file" name="writer_file2[]" />
-							MOBILE : <input type="file" name="writer_file_mobile2[]" />
-							우선순위 : <input type="number" name="sub_slide_priority" style="width: 100px">
-                        </div>
-					</div>
-					<div class="all_line" style="border-top: 0;">
-						<div class="line_title">
-							<span style="cursor: pointer; color: rgb(112, 96, 255)" class="add_file_sub">서브항목추가 +</span>
-						</div>
-						<div class="line_content">
-							소제목1 : <input type="text" name="sub_subject[]" />
-							소제목2 : <input type="text" name="sub_subject2[]" />
-							색상 : <input type="text" name="sub_subject3[]" />
-							
-						</div>
-					</div>
-					<div class="all_line">
-						<div class="line_title" style="position: relative; top:50%; transform:translateY(-50%)">슬라이드 정보</div>
-						<div class="line_content">
-							@foreach($data2 as $data2)
-							<div>
-								소제목 : <input type="text" name="sub_subject[]" value="{{ $data2->sub_subject }}" style="border:none" readonly />
-								소제목2 : <input type="text" name="sub_subject2[]" value="{{ $data2->sub_subject2 }}" style="border:none" readonly />
-								소제목3 : <input type="text" name="sub_subject3[]" value="{{ $data2->sub_subject3 }}" style="border:none" readonly />
-								우선순위 : {{ $data2->priority }}
-								<a href="/storage/app/images/{{ $data2->real_file_name }}" target="_blank">[PC 파일보기]</a>
-								<a href="/storage/app/images/{{ $data2->real_file_name2 }}" target="_blank">[MOBILE 파일보기]</a>
-								<a href="javascript:control('{{ $data2->idx }}');" style="color:red;">[삭제]</a>
-							</div>
-							@endforeach
-						</div>
-					</div>
-					</div>
-					<div class="cate_file_append"></div>
-					<div class="write_line cate_file">
-						<div class="all_line">
-							<div class="line_title">
-								상세이미지 영역
-							</div>
-							<div class="line_content">
-								PC : <input type="file" name="writer_sub_file2[]" />
-								MOBILE : <input type="file" name="writer_sub_file_mobile2[]" />
-								우선순위 : <input type="number" name="sub_image_priority[]" style="width: 100px"> <span style="cursor: pointer; color: rgb(112, 96, 255)" class="add_file_sub_sub">서브항목추가 +</span>
-							</div>
-							@foreach($data3 as $data3)
-							<div>
-								<a href="/storage/app/images/{{ $data3->real_file_name }}" target="_blank">[PC 파일보기]</a>
-								<a href="/storage/app/images/{{ $data3->real_file_name2 }}" target="_blank">[MOBILE 파일보기]</a>
-								우선순위 : {{ $data3->priority }}
-								<a href="javascript:control('{{ $data3->idx }}');" style="color:red;">[삭제]</a>
-							</div>
-							@endforeach
-						</div>
-					</div>					
-				<div class="cate_file_append_sub"></div>
-			@endif
-			</span>
-			
-				<div class="write_line cate_file">
-					<div class="all_line">
-						<div class="line_title">
-							@if(request()->segment(2) == 'pouch' || request()->segment(2) == 'label' || request()->segment(2) == 'inquiry')
-							답변여부
-							@else
-							노출여부
-							@endif
-						</div>
-						<div class="line_content">
-							@if(request()->segment(2) == 'pouch' || request()->segment(2) == 'label' || request()->segment(2) == 'inquiry')
-							<label for="see1"><input type="radio" id="see1" name="use_status" value="Y" @if($data->use_status == 'Y') checked @endif > 답변완료</label>
-<label for="see2"><input type="radio" id="see2" name="use_status" value="N" @if($data->use_status == 'N') checked @endif > 미답변</label>
-							@else
-							<label for="see1"><input type="radio" id="see1" name="use_status" value="Y" @if($data->use_status == 'Y') checked @endif > 사용</label>
-							<label for="see2"><input type="radio" id="see2" name="use_status" value="N" @if($data->use_status == 'N') checked @endif > 중지</label>
-							@endif
-						</div>
-					</div>
-				</div>
+                </div>		
             <div class="write_line">
                 <div class="all_line all_line_bottom">
-                    <div class="line_title">
-                        작성자
-                    </div>
+                    <div class="line_title" style="vertical-align:middle;">휴대폰 번호</div>
                     <div class="line_content">
-                        <input type="text" name="writer" value="{{ session('user_id') }}" readonly style="border:none;">
+                        <input type="text" name="tel" value="{{ $data->tel }}" />
                     </div>
                 </div>
-            </div>
+            </div>	
             <div class="submit_box" style="text-align:center;margin-top:10px;">
                 <input type="submit" value="등록">
                 <input type="reset" value="취소">
@@ -547,7 +103,7 @@
 
 <script src="/js/ckeditor.js"></script>
 
-<script>
+<!-- <script>
 	let editor2;
 	//filebrowserImageUploadUrl:"/image_upload_action?type=Images"
 
@@ -565,12 +121,12 @@
 		.catch( err => {
 			console.error( err.stack );
 		} );
-</script>
-<script type="text/javascript"
+</script> -->
+<!-- <script type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
   <script type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
-
+  
   <script type="text/javascript" src="/editor/js/froala_editor.min.js"></script>
   <script type="text/javascript" src="/editor/js/plugins/align.min.js"></script>
   <script type="text/javascript" src="/editor/js/plugins/char_counter.min.js"></script>
@@ -602,7 +158,7 @@
   <script type="text/javascript" src="/editor/js/plugins/print.min.js"></script>
   <script type="text/javascript" src="/editor/js/third_party/spell_checker.min.js"></script>
   <script type="text/javascript" src="/editor/js/plugins/special_characters.min.js"></script>
-  <script type="text/javascript" src="/editor/js/plugins/word_paste.min.js"></script>
+  <script type="text/javascript" src="/editor/js/plugins/word_paste.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 

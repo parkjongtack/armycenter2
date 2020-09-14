@@ -45,41 +45,56 @@ class Ey_admin extends Controller
 			if($request->learning1) {
 				$file = $request->learning1->store('images');
 				$file_array = explode("/", $file);
-				copy("../storage/app/images/".$file_array[1], "./storage/app/images/".$file_array[1]);
-			} else {
-				$file_array[1] = null;
+                copy("../storage/app/images/".$file_array[1], "./storage/app/images/".$file_array[1]);
+                DB::table('main_data_control')->update(
+                    [
+                        'learning1' => $file_array[1],
+                    ]
+                );
 			}
 
 			if($request->learning2) {
 				$file = $request->learning2->store('images');
 				$file_array2 = explode("/", $file);
-				copy("../storage/app/images/".$file_array2[1], "./storage/app/images/".$file_array2[1]);
-			} else {
-				$file_array2[1] = null;
+                copy("../storage/app/images/".$file_array2[1], "./storage/app/images/".$file_array2[1]);
+                DB::table('main_data_control')->update(
+                    [
+                        'learning2' => $file_array2[1],
+                    ]
+                );
 			}
 
 			if($request->learning3) {
 				$file = $request->learning3->store('images');
 				$file_array3 = explode("/", $file);
-				copy("../storage/app/images/".$file_array3[1], "./storage/app/images/".$file_array3[1]);
-			} else {
-				$file_array3[1] = null;
+                copy("../storage/app/images/".$file_array3[1], "./storage/app/images/".$file_array3[1]);
+                DB::table('main_data_control')->update(
+                    [
+                        'learning3' => $file_array3[1],
+                    ]
+                );
 			}
 
 			if($request->learning4) {
 				$file = $request->learning4->store('images');
 				$file_array4 = explode("/", $file);
-				copy("../storage/app/images/".$file_array4[1], "./storage/app/images/".$file_array4[1]);
-			} else {
-				$file_array4[1] = null;
+                copy("../storage/app/images/".$file_array4[1], "./storage/app/images/".$file_array4[1]);
+                DB::table('main_data_control')->update(
+                    [
+                        'learning4' => $file_array4[1],
+                    ]
+                );
 			}
 
 			if($request->learning5) {
 				$file = $request->learning5->store('images');
 				$file_array5 = explode("/", $file);
-				copy("../storage/app/images/".$file_array5[1], "./storage/app/images/".$file_array5[1]);
-			} else {
-				$file_array5[1] = null;
+                copy("../storage/app/images/".$file_array5[1], "./storage/app/images/".$file_array5[1]);
+                DB::table('main_data_control')->update(
+                    [
+                        'learning5' => $file_array5[1],
+                    ]
+                );
 			}
 
 			DB::table('main_data_control')->update(
@@ -87,11 +102,6 @@ class Ey_admin extends Controller
 					'people_cnt' => $request->people_cnt,
 					'd_day' => $request->d_day,
 					'km_set' => $request->km_set,
-					'learning1' => $file_array[1],
-					'learning2' => $file_array2[1],
-					'learning3' => $file_array3[1],
-					'learning4' => $file_array4[1],
-					'learning5' => $file_array5[1],
 				]
 			);
 
@@ -126,6 +136,17 @@ class Ey_admin extends Controller
 			echo "<script>alert('등록되어 있지 않은 아이디입니다.');location.href='/ey_admin/login';</script>";
 		}
 		
+	}
+
+	public function use_status(Request $request) {
+
+		DB::table('board')->where('idx', $request->idx)->update(
+			[
+				'use_status' => $request->use_status
+			]
+		);
+		
+		echo $request->use_status;
 	}
 
 	public function ey_control(Request $request) {

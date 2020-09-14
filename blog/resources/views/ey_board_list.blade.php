@@ -31,12 +31,12 @@
 							<td>{{ $data->contents }}</td>
 							<td>{{ $data->reg_date }}</td>
 							<td>
-								<select name="use_status_{{ $data->idx }}">
+								<select name="use_status_{{ $data->idx }}" onchange="use_status('{{ $data->idx }}',this.value);">
 									<option value="Y" @if($data->use_status == 'Y') selected @endif >사용</option>
 									<option value="N" @if($data->use_status == 'N') selected @endif >중지</option>
 								</select>
 							</td>
-							<td class="delete_box"><a href="javascript:control('{{ $data->idx }}');">삭제</a><a href="javascript:modify('{{ $data->idx }}');" style="background-color: #08AEEA; border:1px solid #0faeea; color: #fff;">수정</a></td>
+							<td class="delete_box"><a href="javascript:control('{{ $data->idx }}');">삭제</a><a href="/ey_admin/{{ request()->segment(2) }}/write_board_form/modify?board_idx={{ $data->idx }}" style="background-color: #08AEEA; border:1px solid #0faeea; color: #fff;">수정</a></td>
 						</tr>
 					@endforeach
 				@endif
@@ -90,6 +90,7 @@
 		if(confirm("삭제하시겠습니까?")) {
 			var formData = new FormData();
 			formData.append("idx", idx);
+			formData.append("idx", idx);
 			formData.append('_token', '{{ csrf_token() }}');
 
 			$.ajax({
@@ -108,6 +109,30 @@
 				}
 			});
 		}
+	}
+
+	function use_status(idx,val) {
+		console.log(idx)
+		var formData = new FormData();
+		formData.append("idx", idx);
+		formData.append("use_status", val);
+		formData.append('_token', '{{ csrf_token() }}');
+
+		$.ajax({
+			type: 'post',
+			url: '/ey_admin/use_status',
+			processData: false,
+			contentType: false,
+			data: formData,
+			success: function(result) {
+				alert("수정됐습니다.");
+				location.reload();
+			},
+			error: function(xhr, status, error) {
+				//$("#loading").hide();
+				return false;
+			}
+		});
 	}
 
 </script>
