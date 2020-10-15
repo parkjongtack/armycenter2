@@ -21,6 +21,7 @@
             <div class="people">
                 <p class="mo_none"><span></span>누적 방문자 수는 <b class="c_blue"><span>{{ $people_cnt->cnt }}</span>명</b>이며, 누적 참여자 수는 <b class="c_blue">{{ number_format($board_count_set->cnt) }}명</b>입니다!</p>
                 <p class="mo_block">제72주년 국군의 날 챌린지<br>누적 방문자 수는 <b class="c_blue"><span>{{ $people_cnt->cnt }}</span>명</b>이며,<br>누적 참여자 수는 <b class="c_blue">{{ number_format($board_count_set->cnt) }}명</b>입니다!</p>
+                <p>대한민국 국방부와 <b class="c_blue"><span>{{ $main_set->people_cnt }}</span>명</b>이 함께하고 있어요!</p>
             </div>
         </div>
         <div id="section">
@@ -50,6 +51,7 @@
                 <div class="sec_sub transXY">
                     <div class="dDay">
                         <p class="how_many">D-<span>{{ $goal_day }}</span>day<span class="org" style="display: block">현재까지</span></p>
+                        <p class="how_many">D-<span>35</span>day<br><span class="org">현재까지</span></p>
                         <div class="people2">
                             <span>{{ substr($main_set->people_cnt,0 ,1 ) }}</span>
                             <span>{{ substr($main_set->people_cnt,1 ,1 ) }}</span>
@@ -89,6 +91,21 @@
                         <div class="grid mo_none">
                             <img class="" src="/storage/app/images/{{ $main_set->learning5 }}" alt="">
                         </div>
+                    </div>
+                    <div class="grid">
+                        <img src="/storage/app/images/{{ $main_set->learning1 }}" alt="">
+                    </div>
+                    <div class="grid grid_big">
+                        <img src="/storage/app/images/{{ $main_set->learning3 }}" alt="">
+                    </div>
+                    <div class="grid">
+                        <img src="/storage/app/images/{{ $main_set->learning2 }}" alt="">
+                    </div>
+                    <div class="grid">
+                        <img src="/storage/app/images/{{ $main_set->learning4 }}" alt="">
+                    </div>
+                    <div class="grid">
+                        <img src="/storage/app/images/{{ $main_set->learning5 }}" alt="">
                     </div>
                 </div>
             </div>
@@ -162,9 +179,9 @@
                         </li>
                         @endforeach
                     </ul>
-                    <div class="paging">
+                    {{-- <div class="paging">
                         {!! $paging_view !!}
-                    </div>
+                    </div> --}}
                     <form name="search_form" action="{{ $_SERVER['REQUEST_URI'] }}" class="board_search_con" onsubmit="return search();" style="display: none;">
                         <input type="hidden" name="page" />
                         {{-- <!-- <input type="text" name="key" placeholder="검색어를 입력하세요" value="{{ $key }}" required> --> --}}
@@ -177,6 +194,55 @@
                     <p>웜테크는 의류 브랜드<img src="/img/sec5_spao.png" alt="" style="display: inline-block;"> 의 기능성 발열내의이며,<br/>사이즈를 확인 후 정확히 기입해주세요.<br/>추후에 사이즈 변경은 불가합니다.</p>
                     <p>당첨자 발표는 기입해주신 연락처 또는 SNS를 통해<br/>개별 안내합니다.</p>
                     <p>기념품 배송을 위해 개인정보를 정확히 기입해주세요.<br/>정보 입력 누락 / 오류 시 최종 당첨에서 제외됩니다.</p>
+                </div>
+                <div class="sec_sub transX">
+                    <img class="mo_none" src="/img/sec5_sub1.png" alt="">
+                    <img class="mt20 mo_none" src="/img/sec5_sub2.png" alt="">
+                </div>
+                <div class="contact_outer transX">
+                    <p class="all_cnt">총 <span class="org">{{ number_format($board_count_set->cnt) }}</span>개의 응원메시지가 있습니다.</p>
+                    <div class="form_outer">
+                        <form action="">
+                            <div class="line_outer">
+                                <textarea name="" placeholder="마음까지 따뜻해지는 응원의 한마디를 남겨주세요!"></textarea>
+                            </div>
+                            <div class="line_outer">
+                                <input type="text" name="" placeholder="이름을 입력해주세요">
+                                <input type="text" name="" placeholder="연략처를 입력해주세요 (-제외)" class="wd700">
+                            </div>
+                            <div class="line_outer">
+                                <input type="text" name="" placeholder="우편번호"  onclick="sample4_execDaumPostcode();">
+                                <span class="address_img"><img src="/img/form_address" alt=""></span>
+                                <input type="text" name="" placeholder="주소" class="wd340">
+                                <input type="text" name="" placeholder="상세주소입력" class="wd340">
+                            </div>
+                            <div class="line_outer">
+                                <div class="select_size_outer">
+                                    <select name="">
+                                        <option value="">스파오 웜테크 사이즈를 선택해주세요</option>
+                                    </select>
+                                    <div class="input_check">
+                                        <p><label><input type="checkbox" required>개인정보 수집/이용에 동의합니다 </label><span id="see_tr01">[약관보기]</span></p>
+                                        <p><label><input type="checkbox" required>개인정보 취급/위탁에 동의합니다 </label><span id="see_tr02">[약관보기]</span></p>
+                                    </div>
+                                </div>
+                                <input type="submit" value="함께 응원하기">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="list_outer">
+                        @foreach($board_set as $board_set)
+                        <li>
+                            <div class="top">
+                                <span>따뜻한 응원러&nbsp;&nbsp;|</span>
+                                <span>{{ str_replace("-", ".", substr($board_set->reg_date, 0, 10)) }}</span>
+                            </div>
+                            <div class="bot">
+                                <p>{{ $board_set->contents }}</p>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

@@ -91,8 +91,11 @@ body{font-size: 16px; color: #333333;}
 .sec3 .sec_sub .dDay .how_many .org{font-size: 68px; color: #fe7501;}
 .sec3 .sec_sub .dDay .people2 span{font-family: 'Montserrat'; font-weight: 800; background: url(/img/people2_bg.png) no-repeat center; width: 144px; height: 159px; display: inline-block; vertical-align: middle; line-height: 159px; text-align: center; font-size: 114px; color: #ffa834; background-size: contain;}
 .sec3 .sec_sub .dDay .people2 p{display: inline-block; vertical-align: bottom; line-height: 60px;}
+<<<<<<< HEAD
 .sec3 .sec_sub .dDay .people2{position: relative;}
 .sec3 .sec_sub .dDay .people2::after{content: "(*홈페이지 및 SNS 참여자 합계/ 매일 정오 업데이트 예정)"; position: absolute; bottom: -40px; right: 0; font-size: 14px;}
+=======
+>>>>>>> 853e4443575ccfb30051f6d1234b4e0bf2e78f89
 .sec3 .sec_sub .grid{width: 250px; display: inline-block; vertical-align: top;}
 .sec3 .sec_sub .grid:nth-child(2){margin-right: 30px;}
 .sec3 .sec_sub .grid:nth-child(3){margin-right: 30px;}
@@ -104,7 +107,11 @@ body{font-size: 16px; color: #333333;}
 
 .sec5 .sec_sub{top: 290px;}
 .sec5 .sec_sub .mt20{margin-top: 20px;}
+<<<<<<< HEAD
 .sec5 .contact_outer{background-color: #fff; width: 1100px; padding: 65px 55px 40px; top: 1000px; border-radius: 15px;}
+=======
+.sec5 .contact_outer{background-color: #fff; width: 1100px; padding: 65px 55px 40px; top: 950px; border-radius: 15px;}
+>>>>>>> 853e4443575ccfb30051f6d1234b4e0bf2e78f89
 .sec5 li{border-bottom: 1px solid #ddd; padding: 25px 0; font-size: 16px;}
 .sec5 li .top{font-weight: bold; margin-bottom: 15px;}
 .sec5 li .bot{font-size:14px;}
@@ -124,8 +131,13 @@ body{font-size: 16px; color: #333333;}
 .sec5 .input_check label input{position: relative; top: 2px; margin-right: 5px;}
 .all_cnt{font-weight: bold; font-size: 16px;}
 .org{color: #fe7501;}
+<<<<<<< HEAD
 .sec5 li .bot p{word-break: break-word; overflow: hidden; margin: 10px 0;}
 .sec5 li:last-child{border-bottom: 0px;}
+=======
+
+
+>>>>>>> 853e4443575ccfb30051f6d1234b4e0bf2e78f89
 
 
 
@@ -178,7 +190,11 @@ body{font-size: 16px; color: #333333;}
     
     .sec5 .sec_sub{top: 22.3077vw;}
     .sec5 .sec_sub .mt20{margin-top: 1.5385vw;}
+<<<<<<< HEAD
     .sec5 .contact_outer{background-color: #fff; width: 84.6154vw; padding: 5.0000vw 4.2308vw 3.0769vw; top: 76.9231vw; border-radius: 1.1538vw;}
+=======
+    .sec5 .contact_outer{background-color: #fff; width: 84.6154vw; padding: 5.0000vw 4.2308vw 3.0769vw; top: 73.0769vw; border-radius: 1.1538vw;}
+>>>>>>> 853e4443575ccfb30051f6d1234b4e0bf2e78f89
     .sec5 li{border-bottom: 0.0769vw solid #ddd; padding: 1.9231vw 0; font-size: 1.2308vw;}
     .sec5 li .top{font-weight: bold; margin-bottom: 1.1538vw;}
     .sec5 li .bot{font-size:1.0769vw;}
@@ -205,6 +221,7 @@ body{font-size: 16px; color: #333333;}
     .mo_block{display: block;}
     .mo_none{display: none;}
     .sec_bg{width: 100%; max-width: 100%; min-width: 100%;}
+<<<<<<< HEAD
     .sec_sub{width: 88.8889vw;}
     /*header*/
     #header{height: 40.2778vw;line-height: normal; background-color: #fff; position: relative; vertical-align: middle; font-size: 4.1667vw; display: block;}
@@ -212,6 +229,8 @@ body{font-size: 16px; color: #333333;}
     #header p{text-align: center; font-size: 4.1667vw;}
     #header .c_blue{font-size: 5.5556vw;}
     
+=======
+>>>>>>> 853e4443575ccfb30051f6d1234b4e0bf2e78f89
     /*footer*/
     #footer{background-color: #efefef; text-align: center; padding: 8.3333vw 0;}
     #footer img{width: 88.8889vw; margin: 0 auto; margin-bottom: 6.9444vw;}

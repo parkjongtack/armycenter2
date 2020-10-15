@@ -87,7 +87,7 @@ class Main extends Controller
 		}
 
 		$paging_option = array(
-			"pageSize" => 5,
+			"pageSize" => 10,
 			"blockSize" => 5
 		);
 
@@ -102,11 +102,11 @@ class Main extends Controller
 			});
 		}
 
-		$totalQuery->where('board_type', 'armycenter');
-        $totalQuery->where(function($query_set) {
-                $query_set->where('top_type', 'Y')
-                ->orWhere('top_type', null);
-        });
+		// $totalQuery->where('board_type', $boardType);
+        // $totalQuery->where(function($query_set) {
+        //         $query_set->where('top_type', 'Y')
+        //         ->orWhere('top_type', null);
+        // });
 
 		if($request->category_type) {
 			$totalQuery->where('category', $request->category_type);
@@ -115,19 +115,6 @@ class Main extends Controller
 		$totalCount = $totalQuery->get()->count();
 
 		$paging_view = $paging->paging($totalCount, $thisPage, "page");
-
-		$query = DB::table('board')
-		->select(DB::raw('*, substr(reg_date, 1, 10) as reg_date_cut'))
-		->orderBy('idx', 'desc');
-
-		$query->where('board_type', 'armycenter');
-		$query->where('use_status', 'Y');
-
-		if($request->page != "" && $request->page > 1) {
-			$query->skip(($request->page - 1) * $paging_option["pageSize"]);
-		}
-
-		$list = $query->take($paging_option["pageSize"])->get();
 
 		// 게시판 출력 글 번호 계산
 		$number = $totalCount-($paging_option["pageSize"]*($thisPage-1));
@@ -147,7 +134,7 @@ class Main extends Controller
 		$board_set = DB::table('board') 
                     ->select(DB::raw('*'))
 					->where('use_status', 'Y')
-					//->limit(5)
+					->limit(5)
 					->orderby('idx','desc')
 					->get();
 		

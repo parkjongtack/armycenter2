@@ -36,6 +36,7 @@
                     </div>
                 </div>
 			</div>
+<<<<<<< HEAD
             <div class="write_line">
                 <div class="all_line">
                     <div class="line_title">
@@ -50,6 +51,23 @@
                 <div class="all_line">
 						<div class="line_title" style="vertical-align:top;">
 							내용
+=======
+			<div class="write_line">
+                <div class="all_line">
+						<div class="line_title">
+							제목
+						</div>
+						<div class="line_content">
+							<input type="text" name="subject" value="{{ $data->subject }}" />
+						</div>
+                </div>
+            </div>
+			@if(request()->segment(2) == 'label' || request()->segment(2) == 'pouch' || request()->segment(2) == 'inquiry')
+            <div class="write_line">
+                <div class="all_line">
+						<div class="line_title">
+							업체명
+>>>>>>> 853e4443575ccfb30051f6d1234b4e0bf2e78f89
 						</div>
 						<div class="line_content">
 							<textarea readonly style="border: 1px solid #ddd; padding: 0px 10px; min-width: 400px;">{{ $data->contents }}</textarea>
@@ -70,10 +88,165 @@
                 <div class="all_line">
                     <div class="line_title" style="vertical-align:middle;">주소</div>
 						<div class="line_content">
+<<<<<<< HEAD
 							<input type="text" name="address" value="{{ $data->address }}" />
                         </div>
                     </div>
                 </div>		
+=======
+							<input type="text" name="link_value" value="{{ $data->link_value }}" />
+                        </div>
+                </div>
+            </div>
+			@endif
+            {{-- <div class="write_line">
+                <div class="all_line">
+                    <div class="line_title" style="vertical-align:middle;">우선순위</div>
+						<div class="line_content">
+							<input type="number" name="priority" value="{{ $data->priority }}" />
+                        </div>
+                </div>
+            </div> --}}
+			
+			@if(request()->segment(2) != 'press' && request()->segment(2) != 'media')
+            <span id="append_target">
+                <div class="write_line cate_file">
+                    <div class="all_line">
+                        <div class="line_title">
+                            파일선택@if(request()->segment(2) == 'pcslider')(PC)@endif
+                        </div>
+                        <div class="line_content">
+							<input type="file" name="writer_file" />
+							<a href="/storage/app/images/{{ $data->attach_file }}" target="_blank">[파일보기]</a>
+							@if(request()->segment(2) == 'pcslider')
+							<span class="set">(사이즈 1920x720)</span>
+							@elseif(request()->segment(2) == 'beds')
+							<span class="set">(사이즈 1400x960)</span>
+							@endif
+							@if(request()->segment(2) == 'acc')
+							<label for="all_type"><input type="checkbox" id="all_type" name="all_type" value="Y" @if($data->all_type == 'Y') checked @endif />가로전체 채우기</label>
+							@endif
+							@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'section' && request()->segment(2) != 'label' && request()->segment(2) != 'inquiry' && request()->segment(2) != 'equipment' && request()->segment(2) != 'pouch' && request()->segment(2) != 'sale_label' && request()->segment(2) != 'sale_pouch')
+                            <span style="cursor: pointer" class="add_file">파일추가 +</span>
+							@endif
+                        </div>
+                    </div>
+                </div>
+			</span>
+			@endif
+			@if(request()->segment(2) == 'press')
+			<span id="append_target">
+                <div class="write_line cate_file">
+                    <div class="all_line">
+                        <div class="line_title">
+                            썸네일 이미지@if(request()->segment(2) == 'beds' || request()->segment(2) == 'acc' || request()->segment(2) == 'pcslider')(PC)@endif
+                        </div>
+                        <div class="line_content">
+							<input type="file" name="writer_file" />
+							<a href="/storage/app/images/{{ $data->attach_file }}" target="_blank">[썸네일 보기]</a>
+							@if(request()->segment(2) == 'pcslider')
+							<span class="set">(사이즈 1920x720)</span>
+							@elseif(request()->segment(2) == 'beds')
+							<span class="set">(사이즈 1400x960)</span>
+							@endif
+							@if(request()->segment(2) == 'acc')
+							<label for="all_type"><input type="checkbox" id="all_type" name="all_type" value="Y" @if($data->all_type == 'Y') checked @endif />가로전체 채우기</label>
+							@endif
+							@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'press' && request()->segment(2) != 'beds' && request()->segment(2) != 'acc' && request()->segment(2) != 'popup')
+                            <span style="cursor: pointer" class="add_file">파일추가 +</span>
+							@endif
+                        </div>
+                    </div>
+                </div>
+			</span>
+			@endif
+			@if(request()->segment(2) == 'beds' || request()->segment(2) == 'acc' || request()->segment(2) == 'pcslider' || request()->segment(2) == 'section' || request()->segment(2) == 'label' || request()->segment(2) == 'inquiry' || request()->segment(2) == 'notice' || request()->segment(2) == 'equipment' || request()->segment(2) == 'pouch')
+            <span id="append_target_mobile">
+                <div class="write_line cate_file">
+                    <div class="all_line">
+                        <div class="line_title">
+                            파일선택@if(request()->segment(2) == 'beds' || request()->segment(2) == 'pcslider' || request()->segment(2) == 'popup')(MOBILE)@endif
+                        </div>
+                        <div class="line_content">
+                            <input type="file" name="writer_file_mobile" />
+							<a href="/storage/app/images/{{ $data->attach_file2 }}" target="_blank">[파일보기]</a>
+							@if(request()->segment(2) == 'pcslider')
+							<span class="set">(사이즈 1080x615)</span>
+							@elseif(request()->segment(2) == 'beds')
+							<span class="set">(사이즈 1400x960)</span>
+							@endif
+							@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'press' && request()->segment(2) != 'beds' && request()->segment(2) != 'acc' && request()->segment(2) != 'popup' && request()->segment(2) != 'section' && request()->segment(2) != 'label' && request()->segment(2) != 'inquiry' && request()->segment(2) != 'notice' && request()->segment(2) != 'equipment' && request()->segment(2) != 'pouch')
+                            <span style="cursor: pointer" class="add_file">파일추가 +</span>
+							@endif
+                        </div>
+                    </div>
+                </div>
+            </span>
+			@endif
+			<span id="append_target_sub">
+			@if(request()->segment(2) != 'pcslider' && request()->segment(2) != 'section' && request()->segment(2) != 'label' && request()->segment(2) != 'pouch' && request()->segment(2) != 'inquiry' && request()->segment(2) != 'popup' && request()->segment(2) != 'notice' && request()->segment(2) != 'equipment' && request()->segment(2) != 'sale_label' && request()->segment(2) != 'sale_pouch')
+                <div class="write_line cate_file slider_area">
+                    <div class="all_line">
+                        <div class="line_title">
+                            슬라이드 영역
+                        </div>
+                        <div class="line_content">
+                            PC : <input type="file" name="writer_file2[]" />
+							MOBILE : <input type="file" name="writer_file_mobile2[]" />
+							우선순위 : <input type="number" name="sub_slide_priority" style="width: 100px">
+                        </div>
+					</div>
+					<div class="all_line" style="border-top: 0;">
+						<div class="line_title">
+							<span style="cursor: pointer; color: rgb(112, 96, 255)" class="add_file_sub">서브항목추가 +</span>
+						</div>
+						<div class="line_content">
+							소제목1 : <input type="text" name="sub_subject[]" />
+							소제목2 : <input type="text" name="sub_subject2[]" />
+							색상 : <input type="text" name="sub_subject3[]" />
+							
+						</div>
+					</div>
+					</div>
+					<div class="cate_file_append"></div>
+					<div class="write_line cate_file">
+						<div class="all_line">
+							<div class="line_title">
+								상세이미지 영역
+							</div>
+							<div class="line_content">
+								PC : <input type="file" name="writer_sub_file2[]" />
+								MOBILE : <input type="file" name="writer_sub_file_mobile2[]" />
+								우선순위 : <input type="number" name="sub_image_priority[]" style="width: 100px"> <span style="cursor: pointer; color: rgb(112, 96, 255)" class="add_file_sub_sub">서브항목추가 +</span>
+							</div>
+							
+						</div>
+					</div>					
+				<div class="cate_file_append_sub"></div>
+			@endif
+			</span>
+			
+				<div class="write_line cate_file">
+					<div class="all_line">
+						<div class="line_title">
+							@if(request()->segment(2) == 'pouch' || request()->segment(2) == 'label' || request()->segment(2) == 'inquiry')
+							답변여부
+							@else
+							노출여부
+							@endif
+						</div>
+						<div class="line_content">
+							@if(request()->segment(2) == 'pouch' || request()->segment(2) == 'label' || request()->segment(2) == 'inquiry')
+							<label for="see1"><input type="radio" id="see1" name="use_status" value="Y" @if($data->use_status == 'Y') checked @endif > 답변완료</label>
+<label for="see2"><input type="radio" id="see2" name="use_status" value="N" @if($data->use_status == 'N') checked @endif > 미답변</label>
+							@else
+							<label for="see1"><input type="radio" id="see1" name="use_status" value="Y" @if($data->use_status == 'Y') checked @endif > 사용</label>
+							<label for="see2"><input type="radio" id="see2" name="use_status" value="N" @if($data->use_status == 'N') checked @endif > 중지</label>
+							@endif
+						</div>
+					</div>
+				</div>
+>>>>>>> 853e4443575ccfb30051f6d1234b4e0bf2e78f89
             <div class="write_line">
                 <div class="all_line all_line_bottom">
                     <div class="line_title" style="vertical-align:middle;">휴대폰 번호</div>
